@@ -29,7 +29,7 @@ export default function MyPlanPage() {
   const handleRemove = (id: number, isPlan: boolean) => {
     if (isPlan) {
       removeFromPlan(id);
-      toast.success('Removed from today\\'s plan');
+      toast.success("Removed from today's plan");
     } else {
       removeFromSaved(id);
       toast.success('Removed from saved');

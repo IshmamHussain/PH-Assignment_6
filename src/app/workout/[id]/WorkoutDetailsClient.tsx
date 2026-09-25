@@ -23,11 +23,11 @@ export default function WorkoutDetailsClient({ workout }: { workout: Workout }) 
       return;
     }
     if (isInPlan) {
-      toast('Already in today\\'s plan');
+      toast("Already in today's plan");
       return;
     }
     addToPlan(workout);
-    toast.success('Added to today\\'s plan');
+    toast.success("Added to today's plan");
   };
 
   const handleSaveForLater = () => {
