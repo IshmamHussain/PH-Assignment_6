@@ -45,9 +45,10 @@ export default function MyPlanPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12">
-      <div className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-oswald font-extrabold uppercase mb-2">MY PLAN</h1>
+    <div className="w-full flex justify-center py-8 sm:py-12">
+      <div className="w-[calc(100%-2rem)] sm:w-[calc(100%-3rem)] max-w-[1232px]">
+      <div className="mb-8 sm:mb-12">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-oswald font-extrabold uppercase mb-2">MY PLAN</h1>
         <p className="text-gray-400 text-lg">Cap of five lifts for today. Finish them, then load more.</p>
       </div>
 
@@ -133,6 +134,7 @@ export default function MyPlanPage() {
           ))}
         </div>
       )}
+      </div>
     </div>
   );
 }

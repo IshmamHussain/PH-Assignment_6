@@ -6,6 +6,8 @@
 }
 
 @theme inline {
+  --font-sans: var(--font-inter);
+  --font-oswald: var(--font-oswald);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: #ccff00;

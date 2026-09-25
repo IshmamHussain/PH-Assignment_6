@@ -38,8 +38,9 @@ export default function LibraryList() {
   });
 
   return (
-    <section id="library" className="max-w-7xl mx-auto px-6 py-8">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+    <section id="library" className="w-full py-8 flex justify-center">
+      <div className="w-[calc(100%-2rem)] sm:w-[calc(100%-3rem)] max-w-[1232px]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
         <div>
           <h2 className="text-3xl font-oswald font-bold uppercase">THE LIBRARY</h2>
           <p className="text-gray-400">Twelve lifts covering every major muscle group.</p>
@@ -86,6 +87,7 @@ export default function LibraryList() {
           ))}
         </div>
       )}
+      </div>
     </section>
   );
 }

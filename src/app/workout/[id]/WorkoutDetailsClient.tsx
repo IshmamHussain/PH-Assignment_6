@@ -40,7 +40,8 @@ export default function WorkoutDetailsClient({ workout }: { workout: Workout }) 
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div className="w-full flex justify-center py-8 sm:py-12">
+      <div className="w-[calc(100%-2rem)] sm:w-[calc(100%-3rem)] max-w-[1232px] grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
       <div className="relative w-full h-[400px] md:h-[600px] rounded-lg overflow-hidden border border-border bg-[#0a0a0a]">
         <Image src={workout.image} alt={workout.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain" priority />
       </div>
@@ -100,6 +101,7 @@ export default function WorkoutDetailsClient({ workout }: { workout: Workout }) 
             {mounted && isInSaved ? "SAVED" : "SAVE FOR LATER"}
           </button>
         </div>
+      </div>
       </div>
     </div>
   );

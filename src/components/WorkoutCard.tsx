@@ -8,7 +8,7 @@ export default function WorkoutCard({ workout }: { workout: Workout }) {
     <Link href={`/workout/${workout.id}`} className="block group">
       <div className="bg-card rounded-lg overflow-hidden border border-border hover:border-accent transition-colors h-full flex flex-col">
         <div className="relative w-full h-48 bg-[#0a0a0a]">
-          <Image src={workout.image} alt={workout.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-contain group-hover:scale-105 transition-transform duration-300" />
+          <Image src={workout.image} alt={workout.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover object-top group-hover:scale-105 transition-transform duration-300" />
         </div>
         <div className="p-4 flex flex-col flex-1 gap-3">
           <div className="flex gap-2 flex-wrap">
