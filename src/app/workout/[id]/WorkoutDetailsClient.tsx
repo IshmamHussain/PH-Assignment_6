@@ -41,8 +41,8 @@ export default function WorkoutDetailsClient({ workout }: { workout: Workout }) 
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-12">
-      <div className="relative w-full h-[400px] md:h-[600px] rounded-lg overflow-hidden border border-border">
-        <Image src={workout.image} alt={workout.name} fill className="object-cover" priority />
+      <div className="relative w-full h-[400px] md:h-[600px] rounded-lg overflow-hidden border border-border bg-[#0a0a0a]">
+        <Image src={workout.image} alt={workout.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain" priority />
       </div>
 
       <div className="flex flex-col gap-6">

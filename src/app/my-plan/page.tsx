@@ -93,8 +93,8 @@ export default function MyPlanPage() {
         <div className="space-y-4">
           {currentList.map((workout: Workout) => (
             <div key={workout.id} className="bg-card border border-border rounded-lg overflow-hidden flex flex-col sm:flex-row items-center pr-4">
-              <div className="relative w-full sm:w-48 h-48 sm:h-32 flex-shrink-0">
-                <Image src={workout.image} alt={workout.name} fill className="object-cover" />
+              <div className="relative w-full sm:w-48 h-48 sm:h-32 flex-shrink-0 bg-[#0a0a0a]">
+                <Image src={workout.image} alt={workout.name} fill sizes="(max-width: 640px) 100vw, 192px" className="object-contain" />
               </div>
               <div className="flex-1 p-4 sm:p-6 w-full flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>

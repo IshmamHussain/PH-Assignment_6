@@ -25,7 +25,8 @@ export default function Hero() {
             src="/banner.png"
             alt="FitLog Banner"
             fill
-            className="object-cover md:object-right"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-contain md:object-right"
             priority
           />
         </div>
