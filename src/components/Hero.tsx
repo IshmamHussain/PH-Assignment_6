@@ -11,7 +11,7 @@ export default function Hero() {
             TRAIN WITH INTENT. LOG<br />
             EVERY SET.
           </h1>
-          <p className="text-[#a1a1aa] text-base sm:text-lg max-w-[460px] leading-relaxed mt-2 mb-4">
+          <p className="text-[#a1a1aa] text-base sm:text-lg max-w-[560px] leading-relaxed mt-2 mb-4">
             FitLog is a dark, no-nonsense gym companion: pick a lift, lock it into today&apos;s plan, and watch the week&apos;s work add up.
           </p>
           <Link href="#library" className="bg-accent text-background px-6 sm:px-8 py-3 sm:py-3.5 rounded font-bold text-sm hover:bg-[#aacc00] transition-colors">
