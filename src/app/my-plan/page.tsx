@@ -13,6 +13,10 @@ export default function MyPlanPage() {
 
   useEffect(() => {
     setMounted(true);
+    const search = new URLSearchParams(window.location.search);
+    if (search.get('tab') === 'saved') {
+      setActiveTab('saved');
+    }
   }, []);
 
   const currentList = activeTab === 'plan' ? plan : saved;

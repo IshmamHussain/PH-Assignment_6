@@ -40,7 +40,7 @@ export default function Navbar() {
               {mounted ? plan.length : 0}
             </span>
           </Link>
-          <Link href="/my-plan" className="flex items-center gap-2 border border-border px-3 py-1.5 rounded-full text-sm font-bold hover:border-foreground transition-colors">
+          <Link href="/my-plan?tab=saved" className="flex items-center gap-2 border border-border px-3 py-1.5 rounded-full text-sm font-bold hover:border-foreground transition-colors">
             <span>Saved</span>
             <span className="bg-border rounded-full w-5 h-5 flex items-center justify-center text-xs">
               {mounted ? saved.length : 0}
