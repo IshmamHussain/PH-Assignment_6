@@ -23,7 +23,11 @@ export default function LibraryList() {
         const data: Workout[] = await res.json();
         setWorkouts(data);
       } catch (err) {
-        setError('Failed to load workouts');
+        import('@/data/workouts').then((module) => {
+          setWorkouts(module.mockWorkouts);
+        }).catch(() => {
+          setError('Failed to load workouts');
+        });
       } finally {
         setLoading(false);
       }
@@ -57,7 +61,7 @@ export default function LibraryList() {
             <p className="text-gray-400">Twelve lifts covering every major muscle group.</p>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <div className="relative">
               <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
