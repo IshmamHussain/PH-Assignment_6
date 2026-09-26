@@ -3,19 +3,29 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useFitLogStore, type Workout } from '@/store/useFitLogStore';
-import { Clock, Flame, Star, Check, X, ArrowRight, Eye } from 'lucide-react';
+import { Clock, Flame, Star, Check, X, ArrowRight, Eye, ChevronDown } from 'lucide-react';
 import toast from 'react-hot-toast';
+
+type SortOption = 'Duration' | 'Calories' | 'Rating';
 
 export default function MyPlanPage() {
   const { plan, saved, removeFromPlan, removeFromSaved } = useFitLogStore();
   const [activeTab, setActiveTab] = useState<'plan' | 'saved'>('plan');
   const [mounted, setMounted] = useState(false);
+  const [sortBy, setSortBy] = useState<SortOption>('Duration');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const currentList = activeTab === 'plan' ? plan : saved;
+  const sortedList = [...currentList].sort((a, b) => {
+    if (sortBy === 'Duration') return a.duration - b.duration;
+    if (sortBy === 'Calories') return a.caloriesBurned - b.caloriesBurned;
+    if (sortBy === 'Rating') return b.rating - a.rating;
+    return 0;
+  });
 
   const totalExercises = plan.length;
   const totalMinutes = plan.reduce((acc, curr) => acc + curr.duration, 0);
@@ -67,19 +77,48 @@ export default function MyPlanPage() {
         </div>
       </div>
 
-      <div className="flex border-b border-border mb-8">
-        <button
-          onClick={() => setActiveTab('plan')}
-          className={`pb-4 px-6 font-bold text-lg transition-colors ${activeTab === 'plan' ? 'text-accent border-b-2 border-accent' : 'text-gray-400 hover:text-white'}`}
-        >
-          Today's Plan
-        </button>
-        <button
-          onClick={() => setActiveTab('saved')}
-          className={`pb-4 px-6 font-bold text-lg transition-colors ${activeTab === 'saved' ? 'text-accent border-b-2 border-accent' : 'text-gray-400 hover:text-white'}`}
-        >
-          Saved
-        </button>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-border mb-8 gap-4 sm:gap-0 relative">
+        <div className="flex">
+          <button
+            onClick={() => setActiveTab('plan')}
+            className={`pb-4 px-6 font-bold text-lg transition-colors ${activeTab === 'plan' ? 'text-accent border-b-2 border-accent' : 'text-gray-400 hover:text-white'}`}
+          >
+            Today's Plan
+          </button>
+          <button
+            onClick={() => setActiveTab('saved')}
+            className={`pb-4 px-6 font-bold text-lg transition-colors ${activeTab === 'saved' ? 'text-accent border-b-2 border-accent' : 'text-gray-400 hover:text-white'}`}
+          >
+            Saved
+          </button>
+        </div>
+
+        <div className="relative mb-2 sm:mb-0 mr-2 sm:mr-0">
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-gray-400 font-semibold">Sort By:</span>
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="bg-card border border-border px-4 py-2 rounded-md flex items-center justify-between w-40 hover:border-accent transition-colors"
+            >
+              <span className="font-semibold">{sortBy}</span>
+              <ChevronDown size={16} />
+            </button>
+          </div>
+          
+          {isDropdownOpen && (
+            <div className="absolute right-0 top-full mt-2 w-40 bg-card border border-border rounded-md shadow-lg z-10 overflow-hidden">
+              {(['Duration', 'Calories', 'Rating'] as SortOption[]).map((option) => (
+                <button
+                  key={option}
+                  onClick={() => { setSortBy(option); setIsDropdownOpen(false); }}
+                  className={`w-full text-left px-4 py-2 hover:bg-border transition-colors ${sortBy === option ? 'text-accent font-bold' : ''}`}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       {currentList.length === 0 ? (
@@ -92,7 +131,7 @@ export default function MyPlanPage() {
         </div>
       ) : (
         <div className="space-y-4">
-          {currentList.map((workout: Workout) => (
+          {sortedList.map((workout: Workout) => (
             <div key={workout.id} className="bg-card border border-border rounded-lg overflow-hidden flex flex-col sm:flex-row items-center pr-4">
               <div className="relative w-full sm:w-48 h-48 sm:h-32 flex-shrink-0 bg-[#0a0a0a]">
                 <Image src={workout.image} alt={workout.name} fill sizes="(max-width: 640px) 100vw, 192px" className="object-contain" />
