@@ -108,25 +108,25 @@ export default function MyPlanPage() {
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-2 w-full sm:w-auto">
-                  <Link href={`/workout/${workout.id}`} className="flex-1 sm:flex-none flex items-center justify-center gap-1 bg-[#2e3038] hover:bg-[#3e404a] text-white px-4 py-2 rounded-md font-semibold transition-colors text-sm">
-                    <Eye size={16} /> Details
+                <div className="flex items-center gap-3 w-full sm:w-auto mt-4 sm:mt-0">
+                  <Link href={`/workout/${workout.id}`} className="border border-[#2e3038] hover:border-gray-500 bg-transparent text-white px-4 py-2 rounded-full font-semibold transition-colors text-sm">
+                    View Details
                   </Link>
                   {activeTab === 'plan' && (
                     <button 
                       onClick={() => handleMarkAsDone(workout.id)}
-                      className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white p-2 rounded-md transition-colors"
+                      className="flex items-center justify-center gap-2 bg-accent hover:bg-[#aacc00] text-black px-5 py-2 rounded-full font-bold transition-colors text-sm"
                       title="Mark as Done"
                     >
-                      <Check size={20} />
+                      <Check size={16} strokeWidth={3} /> Mark as Done
                     </button>
                   )}
                   <button 
                     onClick={() => handleRemove(workout.id, activeTab === 'plan')}
-                    className="flex items-center justify-center bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white p-2 rounded-md transition-colors"
+                    className="flex items-center justify-center text-gray-500 hover:text-white p-1 ml-1 rounded-full transition-colors"
                     title="Remove"
                   >
-                    <X size={20} />
+                    <X size={18} />
                   </button>
                 </div>
               </div>
