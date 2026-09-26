@@ -18,11 +18,18 @@ export default function LibraryList() {
   useEffect(() => {
     async function fetchWorkouts() {
       try {
-        let res = await fetch('https://api.abcz.workers.dev/api/fitlog');
-        if (!res.ok) {
+        let res;
+        try {
+          res = await fetch('https://api.abcz.workers.dev/api/fitlog');
+        } catch (error) {
+          console.warn("Primary API fetch failed (likely CORS or network error). Trying backup...");
+        }
+
+        if (!res || !res.ok) {
           res = await fetch('https://api.api-store.workers.dev/api/fitlog');
         }
-        if (!res.ok) throw new Error('Failed to fetch data');
+
+        if (!res || !res.ok) throw new Error('Failed to fetch data');
         const data: Workout[] = await res.json();
         setWorkouts(data);
       } catch (err) {
