@@ -26,11 +26,7 @@ export default function LibraryList() {
         const data: Workout[] = await res.json();
         setWorkouts(data);
       } catch (err) {
-        import('@/data/workouts').then((module) => {
-          setWorkouts(module.mockWorkouts);
-        }).catch(() => {
-          setError('Failed to load workouts');
-        });
+        setError('Failed to load workouts');
       } finally {
         setLoading(false);
       }

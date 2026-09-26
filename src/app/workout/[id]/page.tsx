@@ -13,18 +13,11 @@ export default async function WorkoutDetailsPage({ params }: { params: Promise<{
   let workout: Workout;
 
   if (!res.ok) {
-    const { mockWorkouts } = await import('@/data/workouts');
-    const fallbackWorkout = mockWorkouts.find(w => w.id.toString() === resolvedParams.id);
-    
-    if (fallbackWorkout) {
-      workout = fallbackWorkout;
-    } else {
-      if (res.status === 404) return notFound();
-      return <div className="text-center py-20 text-red-500">Failed to load workout details</div>;
-    }
-  } else {
-    workout = await res.json();
+    if (res.status === 404) return notFound();
+    return <div className="text-center py-20 text-red-500">Failed to load workout details</div>;
   }
+  
+  workout = await res.json();
   
   return <WorkoutDetailsClient workout={workout} />;
 }
