@@ -18,13 +18,13 @@ export default function Hero() {
             BROWSE WORKOUTS
           </Link>
         </div>
-        <div className="w-full md:w-[40%] relative h-[250px] sm:h-[300px] md:h-[500px] mt-8 md:mt-0 flex justify-end">
+        <div className="w-full md:w-[40%] relative h-[250px] sm:h-[300px] md:h-[500px] mt-8 md:mt-0 flex justify-center md:justify-end">
           <Image
             src="/banner.png"
             alt="FitLog Banner"
             fill
             sizes="(max-width: 768px) 100vw, 40vw"
-            className="object-contain object-right"
+            className="object-contain object-center md:object-right"
             priority
           />
         </div>
