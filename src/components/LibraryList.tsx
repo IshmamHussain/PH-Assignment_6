@@ -110,7 +110,7 @@ export default function LibraryList() {
           <p className="text-gray-400">No workouts match &quot;{searchQuery}&quot;. Try a different search.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {sortedWorkouts.map(workout => (
             <WorkoutCard key={workout.id} workout={workout} />
           ))}
