@@ -18,7 +18,10 @@ export default function LibraryList() {
   useEffect(() => {
     async function fetchWorkouts() {
       try {
-        const res = await fetch('https://api.abcz.workers.dev/api/fitlog');
+        let res = await fetch('https://api.abcz.workers.dev/api/fitlog');
+        if (!res.ok) {
+          res = await fetch('https://api.api-store.workers.dev/api/fitlog');
+        }
         if (!res.ok) throw new Error('Failed to fetch data');
         const data: Workout[] = await res.json();
         setWorkouts(data);
